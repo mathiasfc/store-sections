@@ -4,6 +4,7 @@ const SharedComponentWithPropsContainer = styled.div`
   overflow: hidden;
   padding: 20px;
   background-color: #e3e3e3;
+  border-radius: 6px;
 `;
 
 export default function SharedComponentWithProps({ title, description }) {

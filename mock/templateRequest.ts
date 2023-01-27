@@ -50,9 +50,15 @@ const templateRequest: TemplateRequest = {
       components: [
         {
           name: "sharedComponentWithProps",
-          sizes: { xs: 4, sm: 4, md: 4, lg: 4, xl: 4 },
+          sizes: { xs: 4 },
           // settingsId
           props: { title: "Teste título", description: "Descrição" },
+        },
+        {
+          name: "sharedComponentWithProps",
+          sizes: { xs: 8 },
+          // settingsId
+          props: { title: "Outro título", description: "Outra Descrição" },
         },
       ],
     },

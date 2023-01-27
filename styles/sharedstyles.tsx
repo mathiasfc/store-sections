@@ -9,7 +9,9 @@ const Main = styled.main`
   width: 100%;
 `;
 
-const Title = styled.h1``;
+const Title = styled.h1`
+  color: white;
+`;
 
 const GridExamples = styled.div`
   max-width: 1440px;
