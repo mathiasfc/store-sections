@@ -17,10 +17,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
-        <Title> Grid Examples</Title>
+        <Title>Grid Examples</Title>
         <GridExamples>
           {templateRequest.sections.map((section) => (
-            <Section key={section.id} components={section.components} />
+            <Section key={section.id} section={section} />
           ))}
         </GridExamples>
       </Main>

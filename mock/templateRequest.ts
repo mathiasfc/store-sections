@@ -1,44 +1,19 @@
-type SectionSettings = {
-  gap: 2;
-};
-
-export type Section = {
-  id: string;
-  settings?: SectionSettings;
-  components: Component[];
-};
-
-export type Component = {
-  name: string;
-  sizes?: {
-    xs?: number;
-    sm?: number;
-    md?: number;
-    lg?: number;
-    xl?: number;
-  };
-  props?: {
-    title?: string;
-    description?: string;
-  };
-};
-
-type TemplateRequest = {
-  sections: Section[];
-};
+import { TemplateRequest } from "./types";
 
 const templateRequest: TemplateRequest = {
   sections: [
     {
       id: "0",
+      settings: { spacing: 2 },
       components: [
         { name: "placeholder", sizes: { xs: 6 } },
         { name: "placeholder", sizes: { xs: 6 } },
-        // { name: "placeholder", sizes: { xs: 4 } },
+        { name: "placeholder", sizes: { xs: 4 } },
       ],
     },
     {
       id: "1",
+      settings: { spacing: 2 },
       components: [
         { name: "placeholder", sizes: { xs: 8 } },
         { name: "placeholder", sizes: { xs: 4 } },
@@ -57,6 +32,9 @@ const templateRequest: TemplateRequest = {
     },
     {
       id: "3",
+      settings: {
+        direction: "row",
+      },
       components: [{ name: "productComparison", sizes: { xs: 12 } }],
     },
     {
@@ -73,7 +51,8 @@ const templateRequest: TemplateRequest = {
         {
           name: "sharedComponentWithProps",
           sizes: { xs: 4, sm: 4, md: 4, lg: 4, xl: 4 },
-          props: { title: "Teste título", description: "Descriçaõ" },
+          // settingsId
+          props: { title: "Teste título", description: "Descrição" },
         },
       ],
     },

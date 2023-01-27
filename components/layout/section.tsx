@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Grid } from "@mui/material";
 import MapSharedComponent from "../shared/mapSharedComponent";
-import { Component } from "../../mock/templateRequest";
+import { Section as SectionType } from "../../mock/types";
 
 const SectionContainer = styled.div`
   display: flex;
@@ -10,23 +10,46 @@ const SectionContainer = styled.div`
   flex-flow: column wrap;
   margin-top: 3rem;
   border: 2px solid green;
+  padding: 15px;
 `;
 
 type SectionProps = {
-  components: Component[];
+  section: SectionType;
 };
 
-export default function Section({ components }: SectionProps) {
+export default function Section({ section }: SectionProps) {
+  console.log(section);
+
+  const components = section?.components;
+
+  const buildSectionProps = (section) => {
+    const direction = section?.settings?.direction;
+    const columnSpacing = section?.settings?.columnSpacing;
+    const rowSpacing = section?.settings?.rowSpacing;
+    const spacing = section?.settings?.spacing;
+
+    const sectionProps = {
+      ...(direction && { direction }),
+      ...(columnSpacing && { columnSpacing }),
+      ...(rowSpacing && { rowSpacing }),
+      ...(spacing && { spacing }),
+    };
+
+    return sectionProps;
+  };
+
   return (
     <SectionContainer>
-      <Grid container spacing={2} >
-        {components?.map((component) => {
+      <Grid
+        container
+        spacing={section?.settings?.spacing || 2}
+        {...buildSectionProps(section)}
+      >
+        {components?.map((component, index) => {
           const { name, sizes, props } = component;
 
-          console.log(component);
-
           return (
-            <Grid item {...sizes} key={name}>
+            <Grid item {...sizes} key={`${name}-${index}`}>
               <MapSharedComponent componentName={name} {...props} />
             </Grid>
           );

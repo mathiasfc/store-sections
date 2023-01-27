@@ -15,7 +15,5 @@ const sharedComponents = {
 export default function MapSharedComponent(props) {
   const Component = sharedComponents[props.componentName];
 
-  console.log(props);
-
   return <Component {...props} />;
 }
